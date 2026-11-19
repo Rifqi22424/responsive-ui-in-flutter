@@ -23,7 +23,11 @@ class BookList extends StatelessWidget {
           selected: book.id == selectedId,
           leading: SizedBox(width: 40, height: 56, child: BookCover(book: book, iconSize: 20)),
           title: Text(book.title, maxLines: 2, overflow: TextOverflow.ellipsis),
-          subtitle: Text('${book.author} · ${book.year}', maxLines: 1, overflow: TextOverflow.ellipsis),
+          subtitle: Text(
+            '${book.author} · ${book.year}',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
           trailing: book.borrowed ? const Icon(Icons.bookmark) : null,
           onTap: () => onTap(book),
         );

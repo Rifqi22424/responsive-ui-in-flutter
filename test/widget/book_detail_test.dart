@@ -7,12 +7,15 @@ void main() {
   final book = BookRepository().books.first;
 
   Widget detailIn(double width) => MaterialApp(
-        home: Scaffold(
-          body: Center(
-            child: SizedBox(width: width, child: BookDetail(book: book, onToggleBorrow: () {})),
-          ),
+    home: Scaffold(
+      body: Center(
+        child: SizedBox(
+          width: width,
+          child: BookDetail(book: book, onToggleBorrow: () {}),
         ),
-      );
+      ),
+    ),
+  );
 
   testWidgets('ruang induk sempit: sampul di atas teks', (tester) async {
     await tester.pumpWidget(detailIn(400));

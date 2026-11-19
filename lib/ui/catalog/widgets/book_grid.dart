@@ -34,10 +34,24 @@ class BookGrid extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 100, width: double.infinity, child: BookCover(book: book)),
+              SizedBox(
+                height: 100,
+                width: double.infinity,
+                child: BookCover(book: book),
+              ),
               const SizedBox(height: 8),
-              Text(book.title, style: text.titleSmall, maxLines: 2, overflow: TextOverflow.ellipsis),
-              Text(book.author, style: text.bodySmall, maxLines: 1, overflow: TextOverflow.ellipsis),
+              Text(
+                book.title,
+                style: text.titleSmall,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              Text(
+                book.author,
+                style: text.bodySmall,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
             ],
           ),
         );

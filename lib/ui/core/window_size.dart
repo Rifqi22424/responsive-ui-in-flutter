@@ -13,7 +13,7 @@ enum WindowSize {
 
   static WindowSize fromSize(Size size) {
     if (size.width < mediumMin) return compact;
-    // HP landscape: lebar tetapi pendek, dua panel terlalu sempit.
+    // HP landscape: lebar tetapi pendek.
     if (size.height < compactHeightMax) return medium;
     if (size.width < expandedMin) return medium;
     return expanded;

@@ -69,11 +69,11 @@ test/
 | 3. Susun | Widget mana diletakkan di mana? | `NavigationBar`/`NavigationRail`, `Row`, `Expanded`, `Wrap`, `GridView` | `_compact()`, `_medium()`, `_expanded()` |
 
 ```dart
-// Langkah 1 (ukur): ukuran jendela aplikasi, bukan ukuran perangkat.
+// Langkah 1 (ukur): ukuran jendela aplikasi.
 final size = MediaQuery.sizeOf(context);
-// Langkah 2 (pilih): ubah ukuran menjadi kelas ukuran Material 3.
+// Langkah 2 (pilih): kelas ukuran Material 3.
 final windowSize = WindowSize.fromSize(size);
-// Langkah 3 (susun): widget yang sama, susunan berbeda.
+// Langkah 3 (susun): widget sama, susunan beda.
 return switch (windowSize) {
   WindowSize.compact => _compact(context),
   WindowSize.medium => _medium(context),

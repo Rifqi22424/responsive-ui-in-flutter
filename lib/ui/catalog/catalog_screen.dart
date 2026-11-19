@@ -24,11 +24,11 @@ class CatalogScreen extends StatelessWidget {
     return ListenableBuilder(
       listenable: viewModel,
       builder: (context, _) {
-        // Langkah 1 (ukur): ukuran jendela aplikasi, bukan ukuran perangkat.
+        // Langkah 1 (ukur): ukuran jendela aplikasi.
         final size = MediaQuery.sizeOf(context);
-        // Langkah 2 (pilih): ubah ukuran menjadi kelas ukuran Material 3.
+        // Langkah 2 (pilih): kelas ukuran Material 3.
         final windowSize = WindowSize.fromSize(size);
-        // Langkah 3 (susun): widget yang sama, susunan berbeda.
+        // Langkah 3 (susun): widget sama, susunan beda.
         return switch (windowSize) {
           WindowSize.compact => _compact(context),
           WindowSize.medium => _medium(context),
@@ -45,7 +45,9 @@ class CatalogScreen extends StatelessWidget {
       body: Column(
         children: [
           if (viewModel.tab == 0) _filter(),
-          Expanded(child: BookList(books: viewModel.books, onTap: (b) => _openDetail(context, b))),
+          Expanded(
+            child: BookList(books: viewModel.books, onTap: (b) => _openDetail(context, b)),
+          ),
         ],
       ),
       bottomNavigationBar: NavigationBar(
@@ -71,7 +73,9 @@ class CatalogScreen extends StatelessWidget {
               child: Column(
                 children: [
                   if (viewModel.tab == 0) _filter(),
-                  Expanded(child: BookGrid(books: viewModel.books, onTap: (b) => _openDetail(context, b))),
+                  Expanded(
+                    child: BookGrid(books: viewModel.books, onTap: (b) => _openDetail(context, b)),
+                  ),
                 ],
               ),
             ),
@@ -111,7 +115,10 @@ class CatalogScreen extends StatelessWidget {
               flex: 3,
               child: selected == null
                   ? const Center(child: Text('Pilih buku untuk melihat detail.'))
-                  : BookDetail(book: selected, onToggleBorrow: () => viewModel.toggleBorrow(selected)),
+                  : BookDetail(
+                      book: selected,
+                      onToggleBorrow: () => viewModel.toggleBorrow(selected),
+                    ),
             ),
           ],
         ),
@@ -125,16 +132,17 @@ class CatalogScreen extends StatelessWidget {
       onDestinationSelected: viewModel.selectTab,
       labelType: NavigationRailLabelType.all,
       destinations: [
-        for (final d in _destinations) NavigationRailDestination(icon: Icon(d.icon), label: Text(d.label)),
+        for (final d in _destinations)
+          NavigationRailDestination(icon: Icon(d.icon), label: Text(d.label)),
       ],
     );
   }
 
   Widget _filter() => CategoryFilter(
-        categories: CatalogViewModel.categories,
-        selected: viewModel.category,
-        onSelected: viewModel.selectCategory,
-      );
+    categories: CatalogViewModel.categories,
+    selected: viewModel.category,
+    onSelected: viewModel.selectCategory,
+  );
 
   // Di layar sempit, detail dibuka sebagai halaman baru.
   void _openDetail(BuildContext context, Book book) {
@@ -149,7 +157,10 @@ class CatalogScreen extends StatelessWidget {
             return Scaffold(
               appBar: AppBar(title: Text(current.title)),
               body: SafeArea(
-                child: BookDetail(book: current, onToggleBorrow: () => viewModel.toggleBorrow(current)),
+                child: BookDetail(
+                  book: current,
+                  onToggleBorrow: () => viewModel.toggleBorrow(current),
+                ),
               ),
             );
           },

@@ -14,7 +14,7 @@ class BookDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        // constraints = ruang dari induk (panel), bukan seluruh layar.
+        // constraints = ruang dari induk, bukan layar.
         final wide = constraints.maxWidth >= 600;
         final cover = SizedBox(width: 140, height: 200, child: BookCover(book: book, iconSize: 56));
         final info = _info(context);
@@ -23,11 +23,19 @@ class BookDetail extends StatelessWidget {
           child: wide
               ? Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [cover, const SizedBox(width: 24), Expanded(child: info)],
+                  children: [
+                    cover,
+                    const SizedBox(width: 24),
+                    Expanded(child: info),
+                  ],
                 )
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Center(child: cover), const SizedBox(height: 24), info],
+                  children: [
+                    Center(child: cover),
+                    const SizedBox(height: 24),
+                    info,
+                  ],
                 ),
         );
       },

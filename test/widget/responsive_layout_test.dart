@@ -8,11 +8,12 @@ import 'package:sesi10_aplikasi_responsif/ui/catalog/widgets/book_grid.dart';
 import 'package:sesi10_aplikasi_responsif/ui/catalog/widgets/book_list.dart';
 
 /// Menjalankan aplikasi di layar tiruan dengan ukuran tertentu (piksel fisik).
-Future<void> pumpApp(WidgetTester tester, Size physicalSize, double pixelRatio) async {
-  tester.view.physicalSize = physicalSize;
-  tester.view.devicePixelRatio = pixelRatio;
+Future<void> pumpApp(WidgetTester tester, Size size, double ratio) async {
+  tester.view.physicalSize = size;
+  tester.view.devicePixelRatio = ratio;
   addTearDown(tester.view.reset);
-  await tester.pumpWidget(MultiProvider(providers: providers, child: const NusaPerpusApp()));
+  const app = NusaPerpusApp();
+  await tester.pumpWidget(MultiProvider(providers: providers, child: app));
   await tester.pumpAndSettle();
 }
 
@@ -48,8 +49,10 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('buku-b4')));
     await tester.pumpAndSettle();
 
-    expect(find.descendant(of: find.byType(BookDetail), matching: find.text('Kalkulus Jilid 1')),
-        findsOneWidget);
+    expect(
+      find.descendant(of: find.byType(BookDetail), matching: find.text('Kalkulus Jilid 1')),
+      findsOneWidget,
+    );
     expect(find.byType(BookList), findsOneWidget); // daftar tetap terlihat
   });
 

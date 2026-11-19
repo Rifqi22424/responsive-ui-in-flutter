@@ -21,13 +21,13 @@ class Book {
   final bool borrowed; // sedang dipinjam oleh pengguna ini
 
   Book copyWith({bool? borrowed}) => Book(
-        id: id,
-        title: title,
-        author: author,
-        category: category,
-        year: year,
-        shelf: shelf,
-        synopsis: synopsis,
-        borrowed: borrowed ?? this.borrowed,
-      );
+    id: id,
+    title: title,
+    author: author,
+    category: category,
+    year: year,
+    shelf: shelf,
+    synopsis: synopsis,
+    borrowed: borrowed ?? this.borrowed,
+  );
 }
